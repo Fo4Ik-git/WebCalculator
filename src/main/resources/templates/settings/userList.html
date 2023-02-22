@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <head th:insert="~{fragments/head :: head}"/>
-    <meta charset="UTF-8">
-</head>
+<head th:insert="~{fragments/head :: head}"/>
 <body>
-<head th:insert="~{fragments/menu :: menu}"/>
+<div th:insert="~{fragments/menu:: menu}"></div>
 
 
 <div>
@@ -31,6 +28,6 @@
 </div>
 
 
-<div th:insert="~{fragments/js :: js}"/>
+<footer th:insert="~{fragments/footer :: footer}"></footer>
 </body>
 </html>
