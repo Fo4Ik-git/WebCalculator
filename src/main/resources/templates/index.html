@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head :: head}"/>
+<body
+        data-new-gr-c-s-check-loaded="14.1086.0" data-gr-ext-installed="">
+
+<div th:insert="~{fragments/menu:: menu}"></div>
+
+<div>
+    <div class="container md-5 mt-5">
+
+        <form th:action="@{/calculate}" method="post" th:if="${elementsGet}">
+            <div th:each="el : ${elementsGet}">
+                <div class="form-group">
+                    <label th:for="${el.name}" th:text="${el.name}"/>
+                    <input type="number" step="any" class="form-control" name="elements" th:value="${el.variable}">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Розрахувати</button>
+        </form>
+
+        <form th:action="@{/clear}" method="post" class="mt-1" th:if="${elementsGet}">
+            <button type="submit" class="btn btn-warning">Clear</button>
+        </form>
+
+        <div th:if="!${elementsGet} and !${error} and !${count}">
+            <h1>Add elements</h1>
+        </div>
+
+    </div>
+</div>
+
+<div th:each="ct : ${count}" class="container">
+    <h5 th:text="${ct}"/>
+</div>
+
+<div class="container" th:if="${error}">
+    <h3 th:text="${error}"></h3>
+    <button><a th:href="${linkBack}">Back</a></button>
+</div>
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+</body>
+
+</html>

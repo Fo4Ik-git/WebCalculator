@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="menu">
+    <div class="container-fluid" bis_skin_checked="1">
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor01" bis_skin_checked="1" style="">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Головна</a>
+                </li>
+                <li class="nav-item" th:if="${user}">
+                    <a class="nav-link" href="/add">Додати елемент</a>
+                </li>
+                <li class="nav-item" th:if="${user}">
+                    <a class="nav-link" href="/elements">Редагувати елемент</a>
+                </li>
+
+            </ul>
+
+
+            <li class="nav-item dropdown">
+                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img th:if="${logo}" th:src="${logo}" alt=""
+                         style="border-radius: 100px;width:48px;height:48px;">
+                    <img th:unless="${logo}" src="https://jaylog.co/wp-content/uploads/2017/12/noimg.png" alt="" style="border-radius: 100px;width:48px;height:48px;">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark mx-auto">
+                    <li th:if="${user}" style="text-align: center;"><button type="submit" class="btn btn-primary"><a class="dropdown-item" href="/settings">Налаштування</a></button></li>
+                    <li th:if="${isAdmin}" style="text-align: center;"><a class="dropdown-item" href="/user">User</a></li>
+                    <li th:if="${user}" style="text-align: center">
+                        <form th:action="@{/logout}" method="post">
+                            <button style="width: 100%" type="submit" class="btn btn-warning"><k style="color: black" class="dropdown-item">Logout</k></button>
+                        </form>
+                    </li>
+                    <li th:if="!${user}" style="text-align: center">
+                        <!--&ensp;-->
+                        <button class="btn btn-primary"><a class="dropdown-item" href="/login" style="color: black">Login</a></button>
+                    </li>
+                    <li th:if="!${user}" style="text-align: center; ">
+                        <!--&ensp;-->
+                        <button class="btn btn-warning"><a class="dropdown-item " href="/registration" style="color: black">Register</a></button>
+                    </li>
+                </ul>
+            </li>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+

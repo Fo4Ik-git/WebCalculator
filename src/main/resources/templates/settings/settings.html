@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/head :: head}"/>
+<body>
+<head th:insert="~{fragments/menu :: menu}"/>
+
+
+<div class="container">
+    Add logo:
+
+    <form th:action="@{/settings/add_logo}" method="post" enctype="multipart/form-data">
+        <input type="file" name="logoFile" id="logoFile">
+        <button type="submit" value="Upload" class="btn btn-primary">Add logo</button>
+    </form>
+</div>
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

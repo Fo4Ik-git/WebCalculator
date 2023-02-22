@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head :: head}"/>
+
+<body
+        data-new-gr-c-s-check-loaded="14.1086.0" data-gr-ext-installed="">
+
+<div th:insert="~{fragments/menu:: menu}"></div>
+
+<div class="container mt-5">
+    <!--    loop for get all posts-->
+    <div th:each="el : ${elements}"  class="alert alert-info mt-2">
+        <h3 th:text="${el.name}"/>
+        <p th:text="'Собівартість ' + ${el.cost}"/>
+        <p th:text="'Вартість ' + ${el.value}"/>
+        <div class="container">
+            <div class="row">
+                <a th:href="'/elements/' + ${el.id} + '/edit'" class="btn btn-primary">Редагувати</a>
+                <a th:href="'/elements/' + ${el.id} + '/remove'" class="btn btn-danger">Видалити</a>
+                <a th:href="'/'" class="btn btn-warning mt-1">Назад</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

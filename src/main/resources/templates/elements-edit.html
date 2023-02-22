@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head :: head}"/>
+
+<body
+        data-new-gr-c-s-check-loaded="14.1086.0" data-gr-ext-installed="">
+
+<div th:insert="~{fragments/menu:: menu}"></div>
+
+<div class="container mt-5 mb-5" th:each="el : ${elements}">
+    <h1>Редагувати елемент</h1>
+    <form th:action="@{/elements/{id}/edit(id=${el.id})}" method="post">
+        <div class="form-group">
+            <h1 th:text="${el.name}" class="text-center"/>
+            <input type="hidden" step="any" class="form-control" id="name" name="name" th:value="${el.name}">
+        </div>
+        <div class="form-group">
+            <label for="value">Вартість</label>
+            <input type="number" step="any" class="form-control" id="value" name="value" th:value="${el.value}">
+        </div>
+        <div class="form-group">
+            <label for="cost">Собівартість</label>
+            <input type="number" step="any" class="form-control" id="cost" name="cost" th:value="${el.cost}">
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Редагувати</button>
+                <a th:href="'/elements/'" class="btn btn-warning mt-1">Назад</a>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

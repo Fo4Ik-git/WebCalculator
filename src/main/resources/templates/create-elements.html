@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head :: head}"/>
+
+<body
+        data-new-gr-c-s-check-loaded="14.1086.0" data-gr-ext-installed="">
+
+<div th:insert="~{fragments/menu:: menu}"></div>
+
+<div class="container mt-5 mb-5">
+    <h1>Створити елемент</h1>
+    <form th:action="@{/add}" method="post">
+        <div class="form-group">
+            <label for="name">Назва</label>
+            <input type="text"  class="form-control" id="name" name="name" placeholder="Введіть назву">
+        </div>
+        <div class="form-group">
+            <label for="value">Вартіст</label>
+            <input type="number" step="any" class="form-control" id="value" name="value" placeholder="Введіть вартісь">
+        </div>
+        <div class="form-group">
+            <label for="cost">Собівартість</label>
+            <input type="number" step="any" class="form-control" id="cost" name="cost" placeholder="Введіть собівартість">
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <button type="submit" class="btn btn-primary">Додати</button>
+                <a th:href="'/'" class="btn btn-warning mt-1">Назад</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:if="${error}">
+    <h3 style="color: red" th:text="${error}"></h3>
+</div>
+
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+</body>
+</html>
