@@ -48,10 +48,10 @@ public class SettingsController {
         try {
             Logo logos = logoRepo.findById(user.getId());
             if (logos != null && !logoFile.getOriginalFilename().equals("")) {
-                logos.setPath("/images/" + saveLogo(user, logoFile, model));
+                logos.setPath(saveLogo(user, logoFile, model));
                 logoRepo.save(logos);
             } else {
-                Logo logo = new Logo("/images/" +saveLogo(user, logoFile, model), user);
+                Logo logo = new Logo(saveLogo(user, logoFile, model), user);
                 logo.setId(user.getId());
                 logoRepo.save(logo);
             }
@@ -70,7 +70,6 @@ public class SettingsController {
             String[] fileNameArray = logoFile.getOriginalFilename().split("\\.");
             String format = "logo." + fileNameArray[fileNameArray.length - 1];
             Path path = Path.of( folder + "/" + format);
-            System.out.println(path);
             byte[] bytes = logoFile.getBytes();
             Files.write(path, bytes);
 

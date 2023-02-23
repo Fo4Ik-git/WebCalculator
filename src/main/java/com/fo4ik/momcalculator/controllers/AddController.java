@@ -32,6 +32,9 @@ public class AddController {
             Config config = new Config(userRepo, logoRepo);
             config.getUserLogo(user, model);
             model.addAttribute("title", "Add Element");
+
+
+
             return "create-elements";
         } catch (Exception e) {
             System.out.println(e.getMessage());

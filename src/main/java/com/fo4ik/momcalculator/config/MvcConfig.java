@@ -9,10 +9,27 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
     public static String uploadDirectory = System.getProperty("user.dir");
 
+    private static String OS = null;
+    public static String getOsName()
+    {
+        if(OS == null) { OS = System.getProperty("os.name"); }
+        return OS;
+    }
+    public static boolean isWindows()
+    {
+        return getOsName().startsWith("Windows");
+    }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        System.out.println("uploadDirectory = " + uploadDirectory);
-        registry.addResourceHandler("/images/**").addResourceLocations("file:" + uploadDirectory + "\\");
+        getOsName();
+        if(isWindows()) {
+            registry.addResourceHandler("/**").addResourceLocations("file:" + uploadDirectory + "\\");
+        } else {
+            registry.addResourceHandler("/**").addResourceLocations("file://" + uploadDirectory + "/");
+        }
+
+
     }
 
     public void addViewControllers(ViewControllerRegistry registry) {

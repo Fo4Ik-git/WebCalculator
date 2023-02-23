@@ -38,6 +38,8 @@ public class WebSecurityConfig {
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
+                        .defaultSuccessUrl("/")
+                        .successForwardUrl("/")
                         .permitAll()
                 )
                 .logout(LogoutConfigurer::permitAll);

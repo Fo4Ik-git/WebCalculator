@@ -54,7 +54,6 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
-        System.out.println(user.toString());
         user.setActive(false);
         user.setRoles(Collections.singleton(Role.USER));
        // user.setPassword(WebSecurityConfig.getPasswordEncoder().encode(user.getPassword()));
